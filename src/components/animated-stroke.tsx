@@ -9,9 +9,10 @@ interface AnimatedStrokeProps extends PathProps {
 
 const AnimatedPath = Animated.createAnimatedComponent(Path)
 
+
 const AnimatedStroke = ({ progress, ...pathProps }: AnimatedStrokeProps) => {
-  const [length, setLength] = useState(0)
-  const ref = useRef<typeof AnimatedPath>(null)
+  const [ length, setLength ] = useState(0);
+  const ref = useRef<typeof AnimatedPath>(null);
   const animatedProps = useAnimatedProps(() => ({
     strokeDashoffset: Math.max(
       0,

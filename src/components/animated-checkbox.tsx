@@ -19,6 +19,7 @@ interface Props {
   boxOutlineColor: string
 }
 
+
 const AnimatedCheckbox = (props: Props) => {
   const { checked, highlightColor, checkmarkColor, boxOutlineColor } = props;
   
@@ -31,6 +32,7 @@ const AnimatedCheckbox = (props: Props) => {
     })
   }, [checked])
 
+  
   const animatedBoxProps = useAnimatedProps(() => ({
     stroke: interpolateColor(
       Easing.bezierFn(0.16, 1, 0.3, 1)(progress.value),
