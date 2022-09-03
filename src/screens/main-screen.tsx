@@ -5,6 +5,8 @@ import shortid from 'shortid';
 import ThemeToggle from '../components/theme-toggle';
 import TaskList, { TaskItemData } from '../components/task-list';
 import AnimatedColorBox from '../components/animated-color-box';
+import Masthead from '../components/masthead';
+import NavBar from '../components/navbar';
 
 
 const initialData = [
@@ -69,6 +71,9 @@ const MainScreen = () => {
       bg={useColorModeValue('warmGray.50', 'primary.900')}
       w='full'
     >
+      <Masthead title='Hello, iammy!' image={require('../assets/masthead.png')}>
+        <NavBar />
+      </Masthead>
       <VStack space={5} alignItems='center' w='full'>
         <TaskList 
           data={data}
