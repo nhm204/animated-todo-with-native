@@ -1,5 +1,5 @@
 import React, { useCallback, useRef } from "react";
-import { AnimatePresence, View } from 'moti'
+import { AnimatePresence, View } from 'moti';
 import { PanGestureHandlerProps, ScrollView } from 'react-native-gesture-handler';
 import TaskItem from './task-item';
 import { makeStyledComponent } from '../utils/styled';
@@ -38,11 +38,26 @@ interface TaskItemProps extends Pick<PanGestureHandlerProps, 'simultaneousHandle
 export const AnimatedTaskItem = (props: TaskItemProps) => {
   const { simultaneousHandlers, data, isEditing, onToggleItem, onChangeSubject, onFinishEditing, onPressLabel, onRemove } = props;
 
-  const handleToggleCheckbox = useCallback(() => onToggleItem(data), [data, onToggleItem]);
-  const handleChangeSubject = useCallback((subject: string) => onChangeSubject(data, subject), [data, onChangeSubject]);
-  const handleFinishEditing = useCallback(() => onFinishEditing(data), [data, onFinishEditing]);
-  const handlePressLabel = useCallback(() => onPressLabel(data), [data, onPressLabel]);
-  const handleRemove = useCallback(() => onRemove(data), [data, onRemove]);
+  const handleToggleCheckbox = useCallback(() => { 
+    onToggleItem(data) 
+  }, [data, onToggleItem]);
+  
+  const handleChangeSubject = useCallback((subject: string) => { 
+    onChangeSubject(data, subject) 
+  }, [data, onChangeSubject]);
+  
+  const handleFinishEditing = useCallback(() => { 
+    onFinishEditing(data) 
+  }, [data, onFinishEditing]);
+  
+  const handlePressLabel = useCallback(() => { 
+    onPressLabel(data) 
+  }, [data, onPressLabel]);
+  
+  const handleRemove = useCallback(() => { 
+    onRemove(data) 
+  }, [data, onRemove]);
+  
 
   return (
     <StyledView
