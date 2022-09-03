@@ -51,7 +51,7 @@ const AnimatedTaskLabel = memo((props: Props) => {
     const easing = Easing.out(Easing.quad)
     if (strikethrough) {
       hstackOffset.value = withSequence(
-        withTiming(4, { duration: 200, easing }),
+        withTiming(8, { duration: 200, easing }),
         withTiming(0, { duration: 200, easing })
       );
       textColorProgress.value = withDelay(
