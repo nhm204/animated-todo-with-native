@@ -1,9 +1,10 @@
 import React, { useCallback, useState } from 'react';
-import { Icon, Center, VStack, useColorModeValue, Fab } from 'native-base';
+import { Icon, VStack, useColorModeValue, Fab } from 'native-base';
 import { AntDesign } from '@expo/vector-icons';
 import shortid from 'shortid';
 import ThemeToggle from '../components/theme-toggle';
 import TaskList, { TaskItemData } from '../components/task-list';
+import AnimatedColorBox from '../components/animated-color-box';
 
 
 const initialData = [
@@ -20,7 +21,7 @@ const initialData = [
 ];
 
 
-export default function MainScreen () {
+const MainScreen = () => {
   const [ data, setData ] = useState(initialData);
   const [ editingItemId, setEditingItemId ] = useState<string | null>(null);
 
@@ -51,8 +52,8 @@ export default function MainScreen () {
   }, []);
 
 
-  const handleFinishEditingTaskItem = useCallback((_item: TaskItemData) => setEditingItemId(null), []);
-  const handlePressTaskItemLabel = useCallback((item: TaskItemData) => setEditingItemId(item.id), []);
+  const handleFinishEditingTaskItem = useCallback((_item: TaskItemData) => { setEditingItemId(null) }, []);
+  const handlePressTaskItemLabel = useCallback((item: TaskItemData) => { setEditingItemId(item.id) }, []);
 
   const handleRemoveItem = useCallback((item: TaskItemData) => {
     setData(prevData => {
@@ -63,11 +64,10 @@ export default function MainScreen () {
 
   
   return (
-    <Center 
-      _dark={{ bg: 'blueGray.900' }} 
-      _light={{ bg:'blueGray.50' }} 
-      px={4} 
+    <AnimatedColorBox
       flex={1}
+      bg={useColorModeValue('warmGray.50', 'primary.900')}
+      w='full'
     >
       <VStack space={5} alignItems='center' w='full'>
         <TaskList 
@@ -101,6 +101,8 @@ export default function MainScreen () {
           setEditingItemId(id);
         }}
       />
-    </Center>
+    </AnimatedColorBox>
   )
 };
+
+export default MainScreen;
